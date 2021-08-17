@@ -1,0 +1,46 @@
+footer {
+  grid-area: footer;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  background-color: #008cff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#008cff), color-stop(#0971c5), color-stop(#0971c5), to(#008cff));
+  background: linear-gradient(to bottom, #008cff, #0971c5, #0971c5, #008cff);
+  position: relative;
+}
+
+footer.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  pointer-events: none;
+  background: #2d5ad6;
+  color: #fff;
+  text-align: center;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  opacity: 0;
+  font-size: 1.1em;
+  padding: 1em;
+  border-radius: .5em;
+}
+
+footer.tooltip:hover {
+  cursor: pointer;
+}
+
+footer.tooltip:hover::after {
+  -webkit-transform: translate(-50%, -130%);
+          transform: translate(-50%, -130%);
+  opacity: 1;
+}
+
+footer .expand_collapse {
+  color: #FFF;
+  font-size: 1.4em;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}

@@ -1,0 +1,58 @@
+header{
+    grid-area: header;
+    position: relative;
+    display: grid;
+    grid-template-columns: .6fr 1fr;
+    width: 100%;
+    align-content: center;
+    font-size: 1rem;
+
+    .logo{
+        height: 60px;
+        display: flex;
+        align-content: center;
+        color:#355fda;
+        font-weight: bold;
+        font-size: 1.4em;
+        justify-self: start;
+        padding-left: 3em;
+
+        p{
+            align-self: center;
+            margin-left: .4em;
+        }
+    }
+
+    section{
+        position: relative;
+        align-self: center;
+        justify-self: flex-end;
+        padding-right: 3em;
+        display: flex;
+        height: 3em;
+        place-content: flex-end;
+
+        .react-date-picker{
+            min-width: 12em;
+    
+            .react-date-picker__wrapper{
+                border: thin solid #d9dbe0;
+                border-radius: .2em;
+                padding: 0 .5em;
+
+                .react-date-picker__inputGroup__input{
+                    outline: none;
+                }
+            }
+        }
+    
+        select{
+            min-width: 10em;
+            padding-left: 3.8em;
+            margin-left: 1em;
+            border: thin solid #d9dbe0;
+            outline: none;
+        }
+    }
+
+}

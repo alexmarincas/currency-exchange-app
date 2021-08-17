@@ -1,0 +1,68 @@
+header {
+  grid-area: header;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: .6fr 1fr;
+      grid-template-columns: .6fr 1fr;
+  width: 100%;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  font-size: 1rem;
+}
+
+header .logo {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  color: #355fda;
+  font-weight: bold;
+  font-size: 1.4em;
+  justify-self: start;
+  padding-left: 3em;
+}
+
+header .logo p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-left: .4em;
+}
+
+header section {
+  position: relative;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: flex-end;
+  padding-right: 3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3em;
+  place-content: flex-end;
+}
+
+header section .react-date-picker {
+  min-width: 12em;
+}
+
+header section .react-date-picker .react-date-picker__wrapper {
+  border: thin solid #d9dbe0;
+  border-radius: .2em;
+  padding: 0 .5em;
+}
+
+header section .react-date-picker .react-date-picker__wrapper .react-date-picker__inputGroup__input {
+  outline: none;
+}
+
+header section select {
+  min-width: 10em;
+  padding-left: 3.8em;
+  margin-left: 1em;
+  border: thin solid #d9dbe0;
+  outline: none;
+}

@@ -1,0 +1,11 @@
+.body {
+  grid-area: body;
+  position: relative;
+  overflow-y: scroll;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+  text-align: center;
+}
