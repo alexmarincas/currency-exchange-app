@@ -3,7 +3,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 import './styles/body.css'
 
-import CurrencyList from 'currency-list'
+import TweenMax from 'gsap'
+
+import { data } from './api/data'
+import { symbols } from './api/symbols'
+
 import Header from './components/Header'
 import Card from './components/Card'
 import Footer from './components/Footer'
@@ -13,48 +17,66 @@ import Currency from './components/Currency'
 
 function App() {
 
-  const [ currencyList, setCurrencyList ] = useState([]) //[ 'GBP', 'EUR', 'USD', 'RON', 'MDL', 'RUB', 'JPY', 'AUD' ]
   const [ base, setBase ] = useState('')
+  const [ amount, setAmount ] = useState(0)
+  const [ rates, setRates ] = useState({})
   const [ allCurrency, setAllCurrency ] = useState([])
-  const [ language, setLanguage ] = useState('ro_RO') // en_US
   const [ showCurrencyList, setShowCurrencyList ] = useState(false)
-
+  const [ date, setDate] = useState( new Date() )
+  
   const currencyRef = useRef(null)
-
+  
   useEffect(() => {
     
-    const temp = []
-    for( let x=0; x<allCurrency.length; x++ ){
-      if(allCurrency[x].active){
-        temp.push(allCurrency[x].code)
-      }
-    }
-    setCurrencyList(temp)
+    // http://api.exchangeratesapi.io/v1/latest?access_key=af8e95f6ec37b3b3219e0bb172121a74
+    setBase( data.base ) // FETCH ONCE AT START
+    setRates( data.rates ) // FETCH AT START AND WHENEVER THE BASE IS CHANGING
 
-  }, [allCurrency])
-  
-  //  List of Currency Codes   
-  useEffect(()=>{
-    const temp = CurrencyList.getAll(language)
-    const temp_array = Object.keys(temp).map( key => {
-      const el = temp[key]
-      return { name: el.name, symbol:el.symbol, code:el.code, name_plural: el.name_plural, active: false }
+    const s = symbols.symbols // FETCH ONCE AT START
+    
+    const temp_array = Object.keys(s).map( (key,i) => {  
+      return { name: s[key], code: key, index: i, active: false }
     })
-
     setAllCurrency(temp_array)
-  }, [language])
+    
+  }, [])
+
+  useEffect(() => {
+    if(base && date){
+      setRates( data.rates ) // FETCH AT START AND WHENEVER THE BASE / DATE ARE CHANGING
+      // http://api.exchangeratesapi.io/v1/2013-12-24?access_key=af8e95f6ec37b3b3219e0bb172121a74&base=RON
+    }
+  }, [base, date])
+
+  const handleFadeOut = () => {
+
+    if(currencyRef.current){
+      TweenMax.to(
+        currencyRef.current,
+        .3,
+        { y: '200px', opacity: 0 }
+      )
+  
+      setTimeout(()=>setShowCurrencyList(false), 300)
+    }
+  }
 
 
-  // http://api.exchangeratesapi.io/v1/latest?access_key=af8e95f6ec37b3b3219e0bb172121a74
 
-  const state = { currencyList, setCurrencyList, allCurrency, setAllCurrency, base, setBase, language, setLanguage, showCurrencyList, setShowCurrencyList, currencyRef }
+  const state = { amount, setAmount, allCurrency, setAllCurrency, base, setBase, showCurrencyList, setShowCurrencyList, currencyRef, rates, setRates, date, setDate }
 
   return (
     <MainContext.Provider value={state}>
     <>
         <Header />
-        <div className='body'>
-            { currencyList.map(currency => <Card currency={currency} key={currency} /> ) }
+        <div className='body' onClick={ handleFadeOut }>
+            { allCurrency.map(currency => {
+              if(currency.active){
+                return <Card currency={currency} key={currency.code} /> 
+              }else{
+                return undefined
+              }
+            }) }
         </div>
         { showCurrencyList && <Currency /> }
         <Footer />

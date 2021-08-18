@@ -19,8 +19,6 @@ const Valuta = ({el, index}) => {
     },[el.code, setSymbol])
 
     const handleClick = () =>{
-        // console.log(el, index)
-        // console.log(allCurrency)
         const temp = [...allCurrency]
         temp[index].active = !temp[index].active
         setAllCurrency(temp)

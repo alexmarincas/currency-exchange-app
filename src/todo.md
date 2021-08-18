@@ -35,3 +35,69 @@ Asteptam cu nerabdare sa ne uitam peste munca facuta de tine!
 Liviu Tomesc - Engineering Manager at Neusoft EDC
 
 Natalia Muresan – HR Manager at Neusoft EDC
+
+
+**ACTIVITY**
+
+[x] - create basic UI
+    [x] - header component
+    [x] - body component
+        [ ] - card component
+    [x] - footer component
+    [x] - list of codes (symbols) component
+
+
+**APP**
+[x] - fetch currency
+    [x] - local JSON based on a request to https://exchangeratesapi.io/v1/latest API - base currency is EUR
+    [ ] - fetch data from https://exchangeratesapi.io/v1/latest API
+[x] - fetch symbols
+    [x] - currency-list library ( cannot be used because exchangeratesapi supports less currency than what this library offers )
+    [x] - local JSON based on a request to https://exchangeratesapi.io/v1/symbols API
+    [ ] - https://exchangeratesapi.io/v1/symbols API
+
+[ ] - header component
+    [x] - RO - EN language support for currency names ( can be used only with currency-list library )
+    [ ] - fetch data on date change: ex https://api.exchangeratesapi.io/v1/2013-12-24
+
+[ ] - card component
+    [x] - handle exchange
+    [x] - handle rates based on the base currency
+    [x] - currency flag, abbreviation, symbol
+    [x] - at click on the x icon, set the active status to false and remove the element from the rendered cards
+    [x] - on input change set the current currency as default (base)
+        [ ] - fetch new data with the new base
+        or
+        [ ] - convert everything based on the relation with previously selected currency / or euro which is default (requires a duplicated array)
+
+[ ] - all symbols component (all currency)
+    [x] - toggle active cards & visual feedback to improve UX
+    [x] - modal behavior: click outside the component in order to close it, fade in on top of the active cards component (body)
+
+[ ] - footer
+    [x] - CTA
+    [x] - toggle on/off symbols component (all currency)
+    [ ] - better UI
+
+
+**PROBLEMS**
+ - API restriction:
+ *  // 20210818035110
+    // http://api.exchangeratesapi.io/v1/2019-12-24?access_key=af8e95f6ec37b3b3219e0bb172121a74&base=USD&symbols=EUR,MDL
+
+    {
+    "error": {
+        "code": "base_currency_access_restricted",
+        "message": "An unexpected error ocurred. [Technical Support: support@apilayer.com]"
+    }
+    }
+
+ *  // 20210818035340
+    // https://api.exchangeratesapi.io/v1/2019-12-24?access_key=af8e95f6ec37b3b3219e0bb172121a74&base=USD
+
+    {
+    "error": {
+        "code": "https_access_restricted",
+        "message": "Access Restricted - Your current Subscription Plan does not support HTTPS Encryption."
+    }
+    }

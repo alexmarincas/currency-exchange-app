@@ -19,7 +19,7 @@ const Currency = () => {
     }, [currencyRef])
 
     return (
-        <Suspense fallback={<h1>Loading..</h1>}>
+        <Suspense fallback={<h1 className='currency-list'>Loading..</h1>}>
         <div className='currency-list' ref={currencyRef}>
             { allCurrency.map( (el, i) => <Valuta el={el} index={i} key={`el${i}`} />) }
         </div>
