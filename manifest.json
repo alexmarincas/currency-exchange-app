@@ -1,0 +1,15 @@
+{
+  "short_name": "Currency exchange",
+  "name": "Currency exchange app - Neusoft practical interview",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "fullscreen",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
