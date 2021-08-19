@@ -60,7 +60,7 @@ const Card = ({currency}) => {
             <p className='symbol'>{symbol}</p>
             <input type='text' value={value} onChange={ handleChange } autoComplete="false" className='textbox' placeholder='amount' />
             <p className='abbreviation'>{code}</p>
-            <p className='convert' data-msg={`${(rates[code] * coeficient)} ${code}`}>1 {base} = { (rates[code] * coeficient).toFixed(2)} {code}</p>
+            <p className='convert' data-msg={`${(rates[code] * coeficient).toFixed(6)} ${code}`}>1 {base} = { (rates[code] * coeficient).toFixed(2)} {code}</p>
             <p className='name'>{name}</p>
         </div>
     )
