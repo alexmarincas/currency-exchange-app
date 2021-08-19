@@ -8,13 +8,15 @@ footer {
   background: -webkit-gradient(linear, left top, left bottom, from(#008cff), color-stop(#0971c5), color-stop(#0971c5), to(#008cff));
   background: linear-gradient(to bottom, #008cff, #0971c5, #0971c5, #008cff);
   position: relative;
+  cursor: pointer;
 }
 
 footer.tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
   pointer-events: none;
-  background: #2d5ad6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#008cff), color-stop(#0971c5), color-stop(#0971c5), to(#008cff));
+  background: linear-gradient(to bottom, #008cff, #0971c5, #0971c5, #008cff);
   color: #fff;
   text-align: center;
   left: 50%;
@@ -26,10 +28,6 @@ footer.tooltip::after {
   font-size: 1.1em;
   padding: 1em;
   border-radius: .5em;
-}
-
-footer.tooltip:hover {
-  cursor: pointer;
 }
 
 footer.tooltip:hover::after {

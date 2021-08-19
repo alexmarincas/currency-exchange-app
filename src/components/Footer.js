@@ -9,9 +9,12 @@ import '../styles/footer.css'
 
 const Footer = () => {
 
-    const { language, setShowCurrencyList, showCurrencyList, currencyRef } = useContext(MainContext)
+    const { language, setShowCurrencyList, showCurrencyList, currencyRef, toggleChevron, setToggleChevron } = useContext(MainContext)
+    
 
     const handleClick = () => {
+
+        setToggleChevron(s=>!s)
 
         if(showCurrencyList){
             TweenMax.to(
@@ -28,7 +31,7 @@ const Footer = () => {
 
     return (
         <footer className={ !showCurrencyList ? 'tooltip' : undefined } data-tooltip={ language === 'ro_RO' ? 'Adaugă valută' : 'Add currency' } onClick={ handleClick }>
-            <FontAwesomeIcon icon={faChevronUp} className='expand_collapse' rotation={ showCurrencyList ? 180 : 0} />
+            <FontAwesomeIcon icon={faChevronUp} className='expand_collapse' rotation={ toggleChevron ? 180 : 0} />
         </footer>
     )
 }

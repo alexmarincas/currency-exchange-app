@@ -6,6 +6,7 @@ footer{
     background-color: rgb(0, 140, 255);
     background: linear-gradient(to bottom, rgb(0, 140, 255), rgb(9, 113, 197), rgb(9, 113, 197), rgb(0, 140, 255));
     position: relative;
+    cursor: pointer;
 
     &.tooltip{
 
@@ -13,7 +14,7 @@ footer{
             content: attr(data-tooltip);
             position: absolute;
             pointer-events: none;
-            background: rgb(45, 90, 214);
+            background: linear-gradient(to bottom, rgb(0, 140, 255), rgb(9, 113, 197), rgb(9, 113, 197), rgb(0, 140, 255));
             color: #fff;
             text-align: center;
             left: 50%;
@@ -25,8 +26,7 @@ footer{
             border-radius: .5em;   
         }
     
-        &:hover{
-            cursor: pointer;
+        &:hover{            
     
             &::after{
                 transform: translate(-50%, -130%);

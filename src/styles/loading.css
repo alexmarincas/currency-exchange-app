@@ -1,0 +1,10 @@
+.loading {
+  grid-area: body;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.loading h1 {
+  color: #0873c9;
+}

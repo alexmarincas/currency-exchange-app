@@ -1,14 +1,15 @@
-import React, { Suspense, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { TweenMax } from 'gsap'
 
 import '../styles/currency.css'
 import MainContext from '../context/MainContext'
-
-const Valuta = React.lazy(() => import('./Valuta'))
+import Valuta from './Valuta'
 
 const Currency = () => {
 
     const { currencyRef, allCurrency } = useContext(MainContext)
+
+    const [ search, setSearch ] = useState('')
 
     useEffect(()=>{
         TweenMax.to(
@@ -18,12 +19,17 @@ const Currency = () => {
         )
     }, [currencyRef])
 
-    return (
-        <Suspense fallback={<h1 className='currency-list'>Loading..</h1>}>
+    return (        
         <div className='currency-list' ref={currencyRef}>
-            { allCurrency.map( (el, i) => <Valuta el={el} index={i} key={`el${i}`} />) }
+            <input type='text' className='search' value={search} onChange={ e => setSearch(e.target.value) } placeholder='search...' />
+            <section>
+            { search ? 
+                allCurrency.map( (el, i) => (el.code.includes(search.toUpperCase()) || el.name.toLowerCase().includes(search.toLowerCase())) && <Valuta el={el} index={i} key={`el${i}`} />) 
+                :
+                allCurrency.map( (el, i) => <Valuta el={el} index={i} key={`el${i}`} />) 
+            }
+            </section>
         </div>
-        </Suspense>
     )
 }
 

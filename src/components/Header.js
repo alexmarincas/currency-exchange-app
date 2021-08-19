@@ -8,10 +8,10 @@ import '../styles/header.css'
 
 const Header = () => {
 
-    const { date, setDate } = useContext(MainContext)
+    const { date, setDate, handleFadeOut } = useContext(MainContext)
     
     return (
-        <header>
+        <header onClick={handleFadeOut}>
             <div className='logo'>
                 <img src='./logo.png' alt='logo'/>
                 <p>Currency Exchange</p>

@@ -16,14 +16,14 @@ const Card = ({currency}) => {
 
     const { name, code, index } = currency
 
-    const { base, setBase, rates, allCurrency, setAllCurrency, amount, setAmount } = useContext(MainContext)
+    const { base, setBase, rates, allCurrency, setAllCurrency, amount, setAmount, coeficient, setCoeficient } = useContext(MainContext)
 
     useEffect(() => {
         if(code!==base){
-            const convertedAmount = rates[code] * amount
+            const convertedAmount = rates[code] * amount * coeficient
             setValue( convertedAmount.toFixed(2) )
         }
-    }, [base, code, rates, amount])
+    }, [base, code, rates, amount, coeficient])
 
     useEffect(()=>{
         setSymbol( getSymbolFromCurrency(code) )
@@ -33,6 +33,7 @@ const Card = ({currency}) => {
 
         if(code !== base){
             setBase(code)
+            setCoeficient( code==='EUR' ? 1 : 1/rates[code] )
         }
 
         if(!isNaN( Number(e.target.value) )){
@@ -44,8 +45,12 @@ const Card = ({currency}) => {
 
     const handleClose = () =>{
         const temp = [...allCurrency]
-        temp[index].active = false
+        temp[index].active = false        
         setAllCurrency(temp)
+        if( temp[index].code === base ){
+            setBase('EUR')
+            setCoeficient(1)
+        }
     }
 
     return (
@@ -55,7 +60,7 @@ const Card = ({currency}) => {
             <p className='symbol'>{symbol}</p>
             <input type='text' value={value} onChange={ handleChange } autoComplete="false" className='textbox' placeholder='amount' />
             <p className='abbreviation'>{code}</p>
-            <p className='convert'>1 {base} = {rates[code].toFixed(2)} {code}</p>
+            <p className='convert' data-msg={`${(rates[code] * coeficient)} ${code}`}>1 {base} = { (rates[code] * coeficient).toFixed(2)} {code}</p>
             <p className='name'>{name}</p>
         </div>
     )

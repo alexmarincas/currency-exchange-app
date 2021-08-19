@@ -27,9 +27,9 @@ const Valuta = ({el, index}) => {
     return (
         <div className={ el.active ? 'valuta selected' : 'valuta'} onClick={ handleClick }>
             <CurrencyFlag currency={ el.code } size="md" />
-            <p>{symbol}</p>
-            <p>{el.name}</p>
-            <p>{el.code}</p>
+            <p className='valuta_symbol'>{symbol}</p>
+            <p className='valuta_name'>{el.name}</p>
+            <p className='valuta_code'>{el.code}</p>
             <FontAwesomeIcon icon={ el.active ? faMinusCircle : faPlusCircle } className={ el.active ? 'red' : undefined  }/>
         </div>
     )

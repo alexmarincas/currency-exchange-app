@@ -68,11 +68,13 @@ Natalia Muresan – HR Manager at Neusoft EDC
     [x] - on input change set the current currency as default (base)
         [ ] - fetch new data with the new base
         or
-        [ ] - convert everything based on the relation with previously selected currency / or euro which is default (requires a duplicated array)
+        [x] - convert everything based on the relation with previously selected currency / or euro which is default (requires a duplicated array)
+    [x] - add detailed label on mouse hover conversion ( from UI point of view, the conversion have toFixed(2) apllied )
 
 [ ] - all symbols component (all currency)
     [x] - toggle active cards & visual feedback to improve UX
     [x] - modal behavior: click outside the component in order to close it, fade in on top of the active cards component (body)
+    [x] - search bar
 
 [ ] - footer
     [x] - CTA
