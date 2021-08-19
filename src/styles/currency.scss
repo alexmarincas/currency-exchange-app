@@ -1,3 +1,5 @@
+$thin_border : thin solid #ccc;
+
 .currency-list{
     position: absolute;
     width: 100%;
@@ -17,8 +19,8 @@
         font-size: 1.2em;
         text-align: center;
         border: none;
-        border-top: thin solid #ccc;
-        border-bottom: thin solid #ccc;
+        border-top: $thin_border;
+        border-bottom: $thin_border;
         outline: none;
 
         &::placeholder{
@@ -46,8 +48,7 @@
             'flag symbol name abbreviation status_svg';
             height: 3em;    
             transition: all .1s ease-in-out;
-    
-            
+                
             &:hover{
                 cursor: pointer;
                 background-color: rgb(47, 56, 63)!important;
@@ -59,7 +60,7 @@
             }
             
             &:nth-child(even){
-                background-color: #e0e0e0;
+                background-color: #e7edef;
             }
 
             span{

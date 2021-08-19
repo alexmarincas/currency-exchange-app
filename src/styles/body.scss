@@ -1,21 +1,16 @@
+@import './mixins';
+
 .body{
     grid-area: body;
     position: relative;
     overflow-y: scroll;
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 12em;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) );
+    grid-auto-rows: 12em;
     transition: opacity .3s ease-in-out;
     padding: 1em;
     padding-top: 3em;
-    
-    @media screen and (max-width: 1024px){
-        grid-template-columns: repeat(2, 1fr);
-    }
 
-    @media screen and (max-width: 480px){
-        grid-template-columns: 1fr;
-    }
-
+    @include card;
 }

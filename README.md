@@ -9,7 +9,7 @@ External libraries used:
 - react-currency-flags
 - currency-symbol-map
 - currency-list
-- react-date-picker
+- react-date-picker ( it trows an error when the screen size is small, but it works )
 
 Images
 - Image by <a href="https://pixabay.com/users/clker-free-vector-images-3736/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=311743">Clker-Free-Vector-Images</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=311743">Pixabay</a>

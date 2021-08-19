@@ -9,9 +9,9 @@ import '../styles/footer.css'
 
 const Footer = () => {
 
-    const { language, setShowCurrencyList, showCurrencyList, currencyRef, toggleChevron, setToggleChevron } = useContext(MainContext)
+    const { setShowCurrencyList, showCurrencyList, currencyRef, toggleChevron, setToggleChevron } = useContext(MainContext)
     
-
+    // Toggle the currency list by clicking the CTA button
     const handleClick = () => {
 
         setToggleChevron(s=>!s)
@@ -30,7 +30,11 @@ const Footer = () => {
     }
 
     return (
-        <footer className={ !showCurrencyList ? 'tooltip' : undefined } data-tooltip={ language === 'ro_RO' ? 'Adaugă valută' : 'Add currency' } onClick={ handleClick }>
+        <footer 
+            className={ !showCurrencyList ? 'tooltip' : undefined } 
+            data-tooltip='Add currency'
+            onClick={ handleClick }
+        >
             <FontAwesomeIcon icon={faChevronUp} className='expand_collapse' rotation={ toggleChevron ? 180 : 0} />
         </footer>
     )

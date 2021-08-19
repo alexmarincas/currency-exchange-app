@@ -11,6 +11,7 @@ const Currency = () => {
 
     const [ search, setSearch ] = useState('')
 
+    // Fade in / slide up animation
     useEffect(()=>{
         TweenMax.to(
             currencyRef.current,

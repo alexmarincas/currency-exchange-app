@@ -14,10 +14,12 @@ const Valuta = ({el, index}) => {
 
     const { allCurrency, setAllCurrency } = useContext(MainContext)
 
+    // Currency symbol
     useEffect(()=>{
         setSymbol( getSymbolFromCurrency(el.code) )
     },[el.code, setSymbol])
 
+    // Here we toggle the clicked card (active/inactive)
     const handleClick = () =>{
         const temp = [...allCurrency]
         temp[index].active = !temp[index].active

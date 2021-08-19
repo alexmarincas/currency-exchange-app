@@ -37,49 +37,47 @@ Liviu Tomesc - Engineering Manager at Neusoft EDC
 Natalia Muresan – HR Manager at Neusoft EDC
 
 
-**ACTIVITY**
+**ACTIONS REQUIRES**
 
 [x] - create basic UI
     [x] - header component
     [x] - body component
-        [ ] - card component
+        [x] - card component
     [x] - footer component
-    [x] - list of codes (symbols) component
+    [x] - list of currency component
 
 
 **APP**
 [x] - fetch currency
     [x] - local JSON based on a request to https://exchangeratesapi.io/v1/latest API - base currency is EUR
-    [ ] - fetch data from https://exchangeratesapi.io/v1/latest API
+    [x] - fetch data from https://exchangeratesapi.io/v1/latest API
 [x] - fetch symbols
     [x] - currency-list library ( cannot be used because exchangeratesapi supports less currency than what this library offers )
     [x] - local JSON based on a request to https://exchangeratesapi.io/v1/symbols API
-    [ ] - https://exchangeratesapi.io/v1/symbols API
+    [x] - https://exchangeratesapi.io/v1/symbols API
 
-[ ] - header component
+[x] - header component
     [x] - RO - EN language support for currency names ( can be used only with currency-list library )
-    [ ] - fetch data on date change: ex https://api.exchangeratesapi.io/v1/2013-12-24
+    [x] - fetch data on date change: ex https://api.exchangeratesapi.io/v1/2013-12-24
 
-[ ] - card component
+[x] - card component
     [x] - handle exchange
     [x] - handle rates based on the base currency
     [x] - currency flag, abbreviation, symbol
     [x] - at click on the x icon, set the active status to false and remove the element from the rendered cards
     [x] - on input change set the current currency as default (base)
-        [ ] - fetch new data with the new base
-        or
-        [x] - convert everything based on the relation with previously selected currency / or euro which is default (requires a duplicated array)
+        [x] - convert everything based on the relation with EUR currency ( API endpoint is not available for free subscription )
     [x] - add detailed label on mouse hover conversion ( from UI point of view, the conversion have toFixed(2) apllied )
 
-[ ] - all symbols component (all currency)
+[x] - all symbols component (all currency)
     [x] - toggle active cards & visual feedback to improve UX
     [x] - modal behavior: click outside the component in order to close it, fade in on top of the active cards component (body)
     [x] - search bar
 
-[ ] - footer
+[x] - footer
     [x] - CTA
     [x] - toggle on/off symbols component (all currency)
-    [ ] - better UI
+    [x] - better UI
 
 
 **PROBLEMS**
