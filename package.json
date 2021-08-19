@@ -1,5 +1,6 @@
 {
   "name": "currency-exchange",
+  "homepage": "https://alexmarincas.github.io/currency-exchange-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^12.1.10",
     "currency-list": "^1.0.6",
     "currency-symbol-map": "^5.0.1",
+    "gh-pages": "^3.2.3",
     "gsap": "^3.7.1",
     "i": "^0.3.6",
     "npm": "^7.20.6",
@@ -23,6 +25,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

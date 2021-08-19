@@ -33,7 +33,7 @@ function App() {
   useEffect(() => {
     
     // FETCH LATEST EXCHANGE RATES
-    fetch(`http://api.exchangeratesapi.io/v1/latest?access_key=${access_key}`)
+    fetch(`https://api.exchangeratesapi.io/v1/latest?access_key=${access_key}`)
       .then(response => response.json())
       .then(data => {            
           if(data.success){ 
@@ -56,7 +56,7 @@ function App() {
 
     }else{
 
-      fetch(`http://api.exchangeratesapi.io/v1/symbols?access_key=${access_key}`)
+      fetch(`https://api.exchangeratesapi.io/v1/symbols?access_key=${access_key}`)
       .then(response => response.json())
       .then(data => {            
           if(data.success){ 
@@ -108,7 +108,7 @@ function App() {
     }
 
     if(date){
-      fetch(`http://api.exchangeratesapi.io/v1/${ formatDate(date) }?access_key=${access_key}`)
+      fetch(`https://api.exchangeratesapi.io/v1/${ formatDate(date) }?access_key=${access_key}`)
       .then(response => response.json())
       .then(data => {            
           if(data.success){             
@@ -121,7 +121,7 @@ function App() {
       })
 
     }else{
-      fetch(`http://api.exchangeratesapi.io/v1/latest?access_key=${access_key}`)
+      fetch(`https://api.exchangeratesapi.io/v1/latest?access_key=${access_key}`)
       .then(response => response.json())
       .then(data => {            
           if(data.success){ 
