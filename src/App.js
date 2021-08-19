@@ -3,8 +3,6 @@ import React, { Suspense, useState, useEffect, useRef } from 'react'
 
 import TweenMax from 'gsap'
 
-// import { data } from './api/data'
-// import { symbols } from './api/symbols'
 
 import Header from './components/Header'
 import Card from './components/Card'
