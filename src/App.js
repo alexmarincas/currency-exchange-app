@@ -44,12 +44,11 @@ function App() {
             setRates(data.rates)           
           }else{
               console.error(data)
-              setBase(localData.base)
-              setRates(localData.rates)
-              console.log('Exchange rates data loaded from local JSON')
           }
       }).catch((err)=>{
           console.error(err)
+
+          // LOAD EXCHANGE DATA FROM LOCAL JSON AS A FALLBACK
           setBase(localData.base)
           setRates(localData.rates)
           console.log('Exchange rates data loaded from local JSON')
@@ -80,23 +79,18 @@ function App() {
 
           }else{
               console.error(data)
-              const s = localSymbols.symbols    
-              const temp_array = Object.keys(s).map( (key,i) => {  
-                return { name: s[key], code: key, index: i, active: false }
-              })
-              setAllCurrency(temp_array)
-              sessionStorage.setItem('currency_symbols', JSON.stringify(temp_array))
-              console.log('Symbols loaded from local JSON')
           }
       }).catch((err)=>{
           console.error(err)
+
+          // LOAD SYMBOLS FROM LOCAL JSON AS A FALLBACK
           const s = localSymbols.symbols    
-              const temp_array = Object.keys(s).map( (key,i) => {  
-                return { name: s[key], code: key, index: i, active: false }
-              })
-              setAllCurrency(temp_array)
-              sessionStorage.setItem('currency_symbols', JSON.stringify(temp_array))
-              console.log('Symbols loaded from local JSON')
+          const temp_array = Object.keys(s).map( (key,i) => {  
+            return { name: s[key], code: key, index: i, active: false }
+          })
+          setAllCurrency(temp_array)
+          sessionStorage.setItem('currency_symbols', JSON.stringify(temp_array))
+          console.log('Symbols loaded from local JSON')
       })
 
     }
@@ -138,15 +132,9 @@ function App() {
             setRates(data.rates)           
           }else{
               console.error(data)
-              setBase(localData.base)
-              setRates(localData.rates)
-              console.log('Exchange rates data loaded from local JSON')
           }
       }).catch((err)=>{
           console.error(err)
-          setBase(localData.base)
-          setRates(localData.rates)
-          console.log('Exchange rates data loaded from local JSON')
       })
 
     }else{
@@ -158,15 +146,9 @@ function App() {
             setRates(data.rates)            
           }else{
               console.error(data)
-              setBase(localData.base)
-              setRates(localData.rates)
-              console.log('Exchange rates data loaded from local JSON')
           }
       }).catch((err)=>{
           console.error(err)
-          setBase(localData.base)
-          setRates(localData.rates)
-          console.log('Exchange rates data loaded from local JSON')
       })
     }
   }, [date])
