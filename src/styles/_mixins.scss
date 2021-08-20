@@ -1,6 +1,34 @@
 $card_blue_color : #0873c9;
 $card_grey_color :#d9dbe0;
 
+@mixin tooltip {
+    &:hover{
+        &::after{
+            opacity: 1;
+            transform: translateY(2em);
+        }
+    }
+
+    &::after{
+        content: attr(data-msg);
+        position: absolute;
+        text-align: center;
+        background-color: $card_blue_color;
+        color: #FFF;
+        pointer-events: none;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+        min-width: 100%;
+        width: fit-content;
+        padding: 5px;
+        right: 0;
+        transform: translateY(0);
+        box-sizing: border-box;
+        box-shadow: 0 10px 10px rgba(0,0,0,.16);
+        border-radius: 3px;
+    }
+}
+
 @mixin card{
     .card{
         position: relative;
@@ -61,31 +89,7 @@ $card_grey_color :#d9dbe0;
             justify-self: end;
             font-size: 1em;
     
-            &:hover{
-                &::after{
-                    opacity: 1;
-                    transform: translateY(2em);
-                }
-            }
-    
-            &::after{
-                content: attr(data-msg);
-                position: absolute;
-                text-align: center;
-                background-color: $card_blue_color;
-                color: #FFF;
-                pointer-events: none;
-                opacity: 0;
-                transition: all .3s ease-in-out;
-                min-width: 100%;
-                width: fit-content;
-                padding: 5px;
-                right: 0;
-                transform: translateY(0);
-                box-sizing: border-box;
-                box-shadow: 0 10px 10px rgba(0,0,0,.16);
-                border-radius: 3px;
-            }
+            @include tooltip;
         }
     
         .abbreviation{
@@ -116,6 +120,8 @@ $card_grey_color :#d9dbe0;
                 color: $card_grey_color;
                 font-style: italic;
             }
+
+            @include tooltip;
         }
     
         .name{

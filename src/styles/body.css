@@ -16,7 +16,7 @@
 
 .body .card {
   position: relative;
-  border: thin solid #d9dbe0;
+  border: thin solid #9598a0;
   border-radius: 5px;
   padding: 1em;
   display: -ms-inline-grid;
@@ -190,6 +190,37 @@
 .body .card .textbox::placeholder {
   color: #d9dbe0;
   font-style: italic;
+}
+
+.body .card .textbox:hover::after {
+  opacity: 1;
+  -webkit-transform: translateY(2em);
+          transform: translateY(2em);
+}
+
+.body .card .textbox::after {
+  content: attr(data-msg);
+  position: absolute;
+  text-align: center;
+  background-color: #0873c9;
+  color: #FFF;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  min-width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px;
+  right: 0;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.16);
+  border-radius: 3px;
 }
 
 .body .card .name {

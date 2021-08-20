@@ -11,6 +11,7 @@ const Card = ({currency}) => {
 
     const [ symbol, setSymbol ] = useState(null)
     const [ value, setValue ] = useState('')
+    const [ valueTitle, setValueTitle ] = useState('')
 
     const { name, code, index } = currency
     const { base, setBase, rates, allCurrency, setAllCurrency, amount, setAmount, coeficient, setCoeficient } = useContext(MainContext)
@@ -20,8 +21,11 @@ const Card = ({currency}) => {
         if(code!==base){
             const convertedAmount = rates[code] * amount * coeficient
             setValue( convertedAmount.toFixed(2) )
+            setValueTitle( convertedAmount.toFixed(6) )
+        }else{
+            setValueTitle(value)
         }
-    }, [base, code, rates, amount, coeficient])
+    }, [base, code, rates, amount, coeficient, value])
 
     // Get the currency symbol
     useEffect(()=>{
@@ -64,6 +68,8 @@ const Card = ({currency}) => {
                 autoComplete="false" 
                 className='textbox' 
                 placeholder='amount' 
+                title={ valueTitle }
+                onFocus={ e => e.target.select() }
             />
             <p className='abbreviation'>{code}</p>
             <p className='convert' data-msg={`${(rates[code] * coeficient).toFixed(6)} ${code}`}>1 {base} = { (rates[code] * coeficient).toFixed(2)} {code}</p>
