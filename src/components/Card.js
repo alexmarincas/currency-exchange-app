@@ -10,20 +10,28 @@ import MainContext from '../context/MainContext'
 const Card = ({currency}) => {
 
     const [ symbol, setSymbol ] = useState(null)
-    const [ value, setValue ] = useState(0)
-    const [ valueTitle, setValueTitle ] = useState(0)
+    const [ value, setValue ] = useState('')
+    const [ valueTitle, setValueTitle ] = useState('')
 
     const { name, code, index } = currency
     const { base, setBase, rates, allCurrency, setAllCurrency, amount, setAmount, coeficient, setCoeficient } = useContext(MainContext)
 
     // Here we are updating the exchange value for all the active cards, except the one we are typing in
     useEffect(() => {
-        if(code!==base){
+        if(code!==base && base && JSON.stringify(rates)!==JSON.stringify({})){
             const convertedAmount = rates[code] * amount * coeficient
             setValue( convertedAmount.toFixed(2) )
-            setValueTitle( convertedAmount.toFixed(6) )
+            setValueTitle( convertedAmount.toFixed(6) )            
         }else{
             setValueTitle(value)
+            if(code === base){
+                if( sessionStorage.getItem('last_value_entered') ){
+                    const val = JSON.parse(sessionStorage.getItem('last_value_entered'))
+                    setValue( val )
+                    setCoeficient( code==='EUR' ? 1 : 1/rates[code] )
+                    setAmount( val )
+                }
+            }
         }
     }, [base, code, rates, amount, coeficient, value])
 
@@ -36,13 +44,16 @@ const Card = ({currency}) => {
     const handleChange = e =>{
         if(code !== base){
             setBase(code)
+            sessionStorage.setItem('base', JSON.stringify( code ) )
             setCoeficient( code==='EUR' ? 1 : 1/rates[code] )
         }
 
         if(!isNaN( Number(e.target.value) )){
             setValue( e.target.value )
             setAmount( e.target.value )
+            sessionStorage.setItem('last_value_entered', JSON.stringify( e.target.value ) )
         }
+
     }
 
     // Remove the card when we click the x button; also, if the card removed was the one set as base, we reset the base currency to EUR

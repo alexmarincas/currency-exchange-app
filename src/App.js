@@ -40,7 +40,11 @@ function App() {
       .then(response => response.json())
       .then(data => {            
           if(data.success){ 
-            setBase(data.base)              
+            if( sessionStorage.getItem('base') ){
+              setBase( JSON.parse( sessionStorage.getItem('base') ) )
+            }else{ 
+              setBase(data.base)   
+            }           
             setRates(data.rates)           
           }else{
               console.error(data)
@@ -49,7 +53,11 @@ function App() {
           console.error(err)
 
           // LOAD EXCHANGE DATA FROM LOCAL JSON AS A FALLBACK
-          setBase(localData.base)
+          if( sessionStorage.getItem('base') ){
+            setBase( JSON.parse( sessionStorage.getItem('base') ) )
+          }else{            
+            setBase(localData.base)
+          }
           setRates(localData.rates)
           console.log('Exchange rates data loaded from local JSON')
       })
@@ -142,7 +150,11 @@ function App() {
       .then(response => response.json())
       .then(data => {            
           if(data.success){ 
-            setBase(data.base)              
+            if( sessionStorage.getItem('base') ){
+              setBase( JSON.parse( sessionStorage.getItem('base') ) )
+            }else{ 
+              setBase(data.base)              
+            }
             setRates(data.rates)            
           }else{
               console.error(data)
