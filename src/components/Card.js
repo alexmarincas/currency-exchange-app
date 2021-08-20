@@ -10,8 +10,8 @@ import MainContext from '../context/MainContext'
 const Card = ({currency}) => {
 
     const [ symbol, setSymbol ] = useState(null)
-    const [ value, setValue ] = useState('')
-    const [ valueTitle, setValueTitle ] = useState('')
+    const [ value, setValue ] = useState(0)
+    const [ valueTitle, setValueTitle ] = useState(0)
 
     const { name, code, index } = currency
     const { base, setBase, rates, allCurrency, setAllCurrency, amount, setAmount, coeficient, setCoeficient } = useContext(MainContext)
