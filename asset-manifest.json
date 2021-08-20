@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/currency-exchange-app/static/css/main.283497c5.chunk.css",
-    "main.js": "/currency-exchange-app/static/js/main.dd85a041.chunk.js",
-    "main.js.map": "/currency-exchange-app/static/js/main.dd85a041.chunk.js.map",
+    "main.js": "/currency-exchange-app/static/js/main.c001db6d.chunk.js",
+    "main.js.map": "/currency-exchange-app/static/js/main.c001db6d.chunk.js.map",
     "runtime-main.js": "/currency-exchange-app/static/js/runtime-main.51dffed3.js",
     "runtime-main.js.map": "/currency-exchange-app/static/js/runtime-main.51dffed3.js.map",
     "static/css/2.9c6b934b.chunk.css": "/currency-exchange-app/static/css/2.9c6b934b.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.9c6b934b.chunk.css",
     "static/js/2.2ef62509.chunk.js",
     "static/css/main.283497c5.chunk.css",
-    "static/js/main.dd85a041.chunk.js"
+    "static/js/main.c001db6d.chunk.js"
   ]
 }
