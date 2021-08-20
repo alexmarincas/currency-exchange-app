@@ -64,6 +64,8 @@ const Card = ({currency}) => {
         if( temp[index].code === base ){
             setBase('EUR')
             setCoeficient(1)
+            sessionStorage.removeItem('base')
+            sessionStorage.removeItem('last_value_entered')
         }
     }
 
